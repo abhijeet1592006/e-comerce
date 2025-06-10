@@ -43,7 +43,7 @@ body{
     place-content: top;
     overflow: hidden;
     color: #22333B;
-    border: 1px solid #22333B;
+    box-shadow: 0px 0px 10px #22333B;
 
     border-radius: 0.5rem;
     display: grid;
@@ -107,10 +107,10 @@ h3{
 }
 @media(max-width:700px){
      .form{
-        height: 45dvh;
+        height: 47dvh;
     }
     .login{
-        height: 50dvh;
+        height: 52dvh;
     } 
     .btn{
         height: 6dvh;
@@ -118,5 +118,7 @@ h3{
     .top_bar{
         height: 7dvh;
     }
-
+    .in{
+        height: 4dvh;
+    }
 }
