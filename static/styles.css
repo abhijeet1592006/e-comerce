@@ -95,11 +95,26 @@ hr{
     border-radius: 1rem;
     background-color:#DDEB9D;
 }
-@media(max-width:700px){
-    /* .login{
-        width: 35dvh;
-    } */
+.btn:hover{
+    background-color: #dbf567;
+}
+h2{
+    font-size: 2rem;
+}
 
+h3{
+    font-size: 2rem;
+}
+@media(max-width:700px){
+     .form{
+        height: 45dvh;
+    }
+    .login{
+        height: 50dvh;
+    } 
+    .btn{
+        height: 6dvh;
+    }
     .top_bar{
         height: 7dvh;
     }
