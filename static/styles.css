@@ -10,68 +10,98 @@
 
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: var(--bars);
+    background-color: #FAF6E9;
     display: grid;
     place-content: center;
     overflow: hidden;
+}
+.top_bar{
+    place-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    color:#f2f2f2;
+    background-color: #22333b;
+    height: 5dvh;
+    width: 100dvw;
 }
 .login{
-    margin: 0;
-    box-shadow: 0px 0px 10px #DDEB9D;
-    padding:1rem;
-    border-radius: 1.2rem;
-    margin-top: 22dvh;
+    margin-top: 0;
     display: grid;
-    place-content: center;
-    height: 50dvh;
-    width: 22vw;
-    background-color:#DDEB9D;
+    place-content:center;
+    height: 40dvh;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #22333B;
+
 }
 .form{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top:1rem;
+    place-content: top;
     overflow: hidden;
     color: #22333B;
+    border: 1px solid #22333B;
 
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+    border-radius: 0.5rem;
+    display: grid;
+
     place-content: center;
-    text-align: center;
+    text-align: start;
     align-items: start;
-    justify-content: space-between;
-    border-radius: 1.5rem;
 
-    gap: 1rem;   
-    padding: 1rem;
-    height: 45dvh;
-    border: 2px solid #22333B;
+
+    gap: 1.2rem;   
+    padding: 2rem;
+    height: 35dvh;
 
  
 
 
 }
 .in{
+    border-radius: 0.3rem;
     color: #22333B;
     background-color: transparent;
-    height: 5dvh;
+    height: 3dvh;
     outline: none;
-    border: none;
-    width: 24dvh;
     font-size: large;
-    border-bottom: 2px solid black;
+    border: 1px solid black;
+}
+.in:focus{
+    box-shadow: 0px 0px 5px #0abaff;
+}
+.lable{
+
+    font-weight: bold;
+
+
+
+
+  
 }
 hr{
-    margin: 0;
-    margin-left: -80px;
-    background-color: #22333B;
-    height: 5px;
-    width: 300%;
+    width: 2000%;
+    margin-left: -100%;
+}
+.btn{
+    font-size: medium;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    height: 4dvh;
+    border-radius: 1rem;
+    background-color:#DDEB9D;
 }
 @media(max-width:700px){
-    .login{
+    /* .login{
         width: 35dvh;
-    }
-    .in{
-        width: 27dvh;
+    } */
+
+    .top_bar{
+        height: 7dvh;
     }
 
 }

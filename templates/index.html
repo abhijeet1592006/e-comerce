@@ -7,21 +7,42 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
+    <div class="top_bar">
+        <h2>Singh.com</h2>
+    </div>
     <div class="login">
+        
 
         <form class="form">
-            <h1>LOGIN</h1>
-
-            <input class="in"  name="user_name" type="text" required placeholder="USER NAME">
-            <input class="in" name="user_pwd" type="password" required placeholder="PASSWORD">
-            <button>Login</button>
-            <div></div>
-            <div style=" display:grid;place-content: center; text-align:start;gap:5px;">
-                <hr><a href="#">Register, your self</a>
-            
-                <a href="#">Owner Login</a>
+            <h3>Sign in or create account </h3>
+            <div style="display: flex; flex-direction:column;">
+            <label class="lable">Enter Mobile No.</label>
+            <input class="in"  name="user_name"  required>
             </div>
+            <div style="display: flex; flex-direction:column;align-items:start;">
+            <label class="lable">Enter Password</label>
+
+            <input class="in" name="user_pwd" type="password" required>
+            <br>By continuing, you agree to Singh's <a href="#">T&C</a>.
+
+
+            </div>
+            <button class="btn">Continue</button>
+            <div></div>
+
         </form>
+
+    </div>
+    
+
+    <div style="display: grid; place-content:center;gap:0.5rem;margin:0px;padding:1rem;font-size:small;">
+        <p>Some Important Links</p>
+
+        <a href="#">Register, your self</a>
+
+        <a href="#">Owner Login</a>
+        <br>
+        <h5>© 2025, Singh.com, Inc. or its affiliates</h5>
     </div>
     
 </body>
