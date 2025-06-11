@@ -13,7 +13,7 @@ class Data(db.Model):
     id=db.column(db.Integer,primarykey=True)
 
 db=SQLAlchemy(app)
-with app.open():
+with app.app_context:
     app.create_all()
 
 @app.route("/")
