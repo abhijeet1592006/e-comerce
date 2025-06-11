@@ -10,3 +10,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 db=SQLAlchemy(app)
 
 
+@app.route("/")
+def main():
+    return render_template("index.html")
+
