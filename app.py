@@ -10,10 +10,11 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 db=SQLAlchemy(app)
 
 class Data(db.Model):
-    db.co
+    id=db.column(db.Integer,primarykey=True)
 
 db=SQLAlchemy(app)
-
+with app.open():
+    app.create_all()
 
 @app.route("/")
 def main():
