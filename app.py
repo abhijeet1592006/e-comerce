@@ -10,7 +10,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 db=SQLAlchemy(app)
 
 class Customer_data(db.Model):
-    __tableName__="customer_data"
+    __tablename__="customer_data"
     uid=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(25),nullable=False)
     password=db.Column(db.String(25),nullable=False)
@@ -19,17 +19,18 @@ class Customer_data(db.Model):
     address=db.Column(db.String(100),nullable=False)
 
 class Product(db.Model):
-    __tableName__="Product"
+    __tablename__="product"
     
     pid=db.Column(db.Integer,primary_key=True)
     pname=db.Column(db.String(25),nullable=False)
-    prating=db.Column(db.String(25),nullabe=True)
+    prating=db.Column(db.String(25),nullable=True)
 
 
 class Orders(db.Model):
-    __tableName__="Orders"
+    __tablename__="orders"
     oid=db.Column(db.Integer,primary_key=True)
-    product_id = db.Column(db.Integer, ForeignKey('pid'))
+    product_id = db.Column(db.Integer, db.ForeignKey('product.pid'))
+    user_id = db.Column(db.Integer, db.ForeignKey('customer_data.uid'))
 
     user_name=db.Column(db.String(25),nullable=False)
     user_address=db.Column(db.String(100),nullable=False)
