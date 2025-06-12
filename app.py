@@ -22,10 +22,18 @@ class Product(db.Model):
     __tableName__="Product"
     
     pid=db.Column(db.Integer,primary_key=True)
+    pname=db.Column(db.String(25),nullable=False)
+    prating=db.Column(db.String(25),nullabe=True)
+
 
 class Orders(db.Model):
     __tableName__="Orders"
     oid=db.Column(db.Integer,primary_key=True)
+    product_id = db.Column(db.Integer, ForeignKey('pid'))
+
+    user_name=db.Column(db.String(25),nullable=False)
+    user_address=db.Column(db.String(100),nullable=False)
+    user_phone_no=db.Column(db.Integer,nullable=True)
 
 
 with app.app_context():
