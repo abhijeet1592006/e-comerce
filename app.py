@@ -9,14 +9,23 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 
 db=SQLAlchemy(app)
 
-class Data(db.Model):
-    __tableName__="customer"
+class Customer_data(db.Model):
+    __tableName__="customer_data"
     uid=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(25),nullable=False)
     password=db.Column(db.String(25),nullable=False)
     orders=db.Column(db.String(50),nullable=True)
     phone_no=db.Column(db.Integer,nullable=True)
     address=db.Column(db.String(100),nullable=False)
+
+class Product(db.Model):
+    __tableName__="Product"
+    
+    pid=db.Column(db.Integer,primary_key=True)
+
+class Orders(db.Model):
+    __tableName__="Orders"
+    oid=db.Column(db.Integer,primary_key=True)
 
 
 with app.app_context():
