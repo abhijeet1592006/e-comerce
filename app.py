@@ -17,6 +17,8 @@ class Customer_data(db.Model):
     orders=db.Column(db.String(50),nullable=True)
     phone_no=db.Column(db.Integer,nullable=True)
     address=db.Column(db.String(100),nullable=False)
+    cart=db.Column(db.String(50),nullable=True)
+
 
 class Product(db.Model):
     __tablename__="product"
@@ -31,7 +33,7 @@ class Orders(db.Model):
     oid=db.Column(db.Integer,primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('product.pid'))
     user_id = db.Column(db.Integer, db.ForeignKey('customer_data.uid'))
-
+    
     user_name=db.Column(db.String(25),nullable=False)
     user_address=db.Column(db.String(100),nullable=False)
     user_phone_no=db.Column(db.Integer,nullable=True)
