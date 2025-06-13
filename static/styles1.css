@@ -17,6 +17,7 @@
   }
   
   .navbar {
+
     height: 7dvh;
     font-size: large;
     display: flex;
@@ -28,19 +29,40 @@
   }
 
   .specific{
-    margin-top: 0;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    
+    margin-top: 2dvh;
     background-color:#22333B;
     color: #DDEB9D;
     display: flex;
     flex-direction: row;
-    font-size: medium;
+    font-size: larger;
     align-items: center;
     justify-content: space-evenly;
-    height: 7dvh;
-    width:40dvb;
+    height: 8dvh;
+    width:70dvb;
+    overflow: hidden;
     padding: 1rem;
+  }
+.scroll-content{
+    
+    background-color:transparent;
+    
+    display: inline-flex;
+    font-size: larger;
+    gap: 5rem;
+    padding: 0.4rem;
+    animation: scroll 10s linear infinite;
+}
+  @keyframes scroll {
+
+    0%{
+        transform: translateX(0);
+
+    }
+    100%{
+        transform: translateX(-50%);
+    }
+    
   }
   
   .product-grid {
@@ -99,12 +121,34 @@
     background: #ddd;
     margin-top: 2rem;
   }
-
+.banner{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    place-content: center;
+}
 
   
   @media (max-width: 768px) {
     .product-grid {
       grid-template-columns: 1fr;
     }
+    .specific{
+        margin-top: 2dvh;
+        background-color:#22333B;
+        color: #DDEB9D;
+        display: flex;
+        flex-direction: row;
+        font-size: larger;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 7dvh;
+        width:50dvb;
+        overflow: hidden;
+        padding: 2rem;
+      }
+      .banner{
+        margin-left: 0%;
+        transform: translateX(0%);
+      }
   }
   

@@ -9,7 +9,7 @@
 <body>
   <header>
     <nav class="navbar">
-      <h1>$ingh</h1>
+      <h1 >$ingh</h1>
 
       <div class="cart-icon" onclick="toggleCart()">
         🛍️ <span id="cart-count">0</span>
@@ -18,11 +18,23 @@
   </header>
 
   <main>
+    <div class="banner">
+
+    
     <div class="specific">
-        <a>Men wear</a>
-        <a>Women wear</a>
-        <a>Kids wear</a>
-      </div>
+        <div class="scroll-content">
+            <div onclick="scrolls('men')">Men wear</div>
+            <a onclick="scrolls('men')">Women wear</a>
+            <a onclick="scrolls('men')">Kids wear</a>
+            <a onclick="scrolls('men')">Men wear</a>
+            <a onclick="scrolls('men')">Women wear</a>
+            <a onclick="scrolls('men')">Kids wear</a>
+
+        </div>
+
+      
+    </div>
+    </div>
 
     <section class="product-grid">
       <!-- Example Product Card -->
@@ -68,6 +80,7 @@
         <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
         
       </div>
+      <section id='men' >
       <div class="product-card">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15rhZJtqy0pX2q0zA11fOHeMKJabrPLwY3w&s" alt="Product 1">
         <h2>Red Hoodie</h2>
@@ -82,7 +95,7 @@
         <p>₹1999</p>
         <button onclick="addToCart('Black Sneakers', 1999)">Add to Cart</button>
       </div>
-
+    </section>
       <!-- Add more cards as needed -->
     </section>
 
