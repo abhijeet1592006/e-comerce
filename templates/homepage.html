@@ -1,388 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$ingh</title>
-    <link rel="stylesheet" href="/static/styles1.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script type="importmap">
-    {
-        "imports": {
-            "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
-        }
-    }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$ingh</title>
+  <link rel="stylesheet" href="/static/styles1.css" />
 </head>
 <body>
-    <div id="app">
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <div class="logo">
-                    <h1>$ingh</h1>
-                </div>
-                <nav class="desktop-nav">
-                    <ul>
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#categories">Categories</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-icons">
-                    <a href="#" @click.prevent="toggleSearch"><i class="fas fa-search"></i></a>
-                    <a href="#" @click.prevent="toggleCart"><i class="fas fa-shopping-cart"></i><span v-if="cartItems.length" class="cart-count">{{ cartItems.length }}</span></a>
-                    <a href="#" class="mobile-menu-toggle" @click.prevent="toggleMobileMenu"><i class="fas fa-bars"></i></a>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="mobile-menu" :class="{ active: mobileMenuOpen }">
-                <ul>
-                    <li><a href="#" @click="closeMobileMenu">Home</a></li>
-                    <li><a href="#products" @click="closeMobileMenu">Products</a></li>
-                    <li><a href="#categories" @click="closeMobileMenu">Categories</a></li>
-                    <li><a href="#about" @click="closeMobileMenu">About</a></li>
-                </ul>
-            </div>
-            
-            <!-- Search Overlay -->
-            <div class="search-overlay" :class="{ active: searchOpen }">
-                <div class="container">
-                    <form>
-                        <input type="text" placeholder="Search for products..." v-model="searchQuery">
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                    <button class="close-search" @click="toggleSearch"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-        </header>
+  <header>
+    <nav class="navbar">
+      <h1>$ingh</h1>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2>Sustainable Shopping for a Better Tomorrow</h2>
-                    <p>Discover eco-friendly products that make a difference.</p>
-                    <a href="#products" class="btn">Shop Now</a>
-                </div>
-            </div>
-        </section>
+      <div class="cart-icon" onclick="toggleCart()">
+        🛍️ <span id="cart-count">0</span>
+      </div>
+    </nav>
+  </header>
 
-        <!-- Featured Categories -->
-        <section class="categories" id="categories">
-            <div class="container">
-                <h2 class="section-title">Shop by Category</h2>
-                <div class="category-grid">
-                    <div class="category-card" v-for="category in categories" :key="category.id">
-                        <div class="category-img">
-                            <img :src="category.image" :alt="category.name">
-                        </div>
-                        <h3>{{ category.name }}</h3>
-                        <a :href="'#category-' + category.id" class="btn-small">View All</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <main>
+    <div class="specific">
+        <a>Men wear</a>
+        <a>Women wear</a>
+        <a>Kids wear</a>
+      </div>
 
-        <!-- Featured Products -->
-        <section class="products" id="products">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Products</h2>
-                    <div class="filter-controls">
-                        <span>Filter by:</span>
-                        <select v-model="currentFilter">
-                            <option value="all">All</option>
-                            <option value="popular">Popular</option>
-                            <option value="newest">Newest</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="products-grid">
-                    <div class="product-card" v-for="product in filteredProducts" :key="product.id" @click="quickView(product)">
-                        <div class="product-badge" v-if="product.badge">{{ product.badge }}</div>
-                        <div class="product-img">
-                            <img :src="product.image" :alt="product.name">
-                            <div class="product-actions">
-                                <button @click.stop="addToCart(product)" class="add-to-cart"><i class="fas fa-shopping-cart"></i></button>
-                                <button @click.stop="toggleWishlist(product)" class="add-to-wishlist" :class="{ active: isInWishlist(product) }">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button @click.stop="quickView(product)" class="quick-view"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3>{{ product.name }}</h3>
-                            <div class="product-rating">
-                                <i v-for="i in 5" :key="i" class="fas fa-star" :class="{ active: i <= product.rating }"></i>
-                                <span>({{ product.reviewCount }})</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">${{ product.price.toFixed(2) }}</span>
-                                <span class="old-price" v-if="product.oldPrice">${{ product.oldPrice.toFixed(2) }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="load-more">
-                    <button class="btn">Load More</button>
-                </div>
-            </div>
-        </section>
+    <section class="product-grid">
+      <!-- Example Product Card -->
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15rhZJtqy0pX2q0zA11fOHeMKJabrPLwY3w&s" alt="Product 1">
+        <h2>Red Hoodie</h2>
+        <p>₹999</p>
+        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXFFUO4kE7yiV-GJKkeTjFiaa4gP9P3eUqvA&s" alt="Product 1">
+        <h2>Red Hoodie</h2>
+        <p>₹999</p>
+        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15rhZJtqy0pX2q0zA11fOHeMKJabrPLwY3w&s" alt="Product 1">
+        <h2>Red Hoodie</h2>
+        <p>₹999</p>
+        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15rhZJtqy0pX2q0zA11fOHeMKJabrPLwY3w&s" alt="Product 1">
+        <h2>Red Hoodie</h2>
+        <p>₹999</p>
+        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15rhZJtqy0pX2q0zA11fOHeMKJabrPLwY3w&s" alt="Product 1">
+        <h2>Red Hoodie</h2>
+        <p>₹999</p>
+        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15rhZJtqy0pX2q0zA11fOHeMKJabrPLwY3w&s" alt="Product 1">
+        <h2>Red Hoodie</h2>
+        <p>₹999</p>
+        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15rhZJtqy0pX2q0zA11fOHeMKJabrPLwY3w&s" alt="Product 1">
+        <h2>Red Hoodie</h2>
+        <p>₹999</p>
+        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        
+      </div>
 
-        <!-- Special Offer Banner -->
-        <section class="special-offer">
-            <div class="container">
-                <div class="offer-content">
-                    <h2>Special Offer</h2>
-                    <h3>Get 20% Off Your First Order</h3>
-                    <p>Use code <strong>ECO20</strong> at checkout</p>
-                    <a href="#products" class="btn">Shop Now</a>
-                </div>
-            </div>
-        </section>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200" alt="Product 2">
+        <h2>Black Sneakers</h2>
+        <p>₹1999</p>
+        <button onclick="addToCart('Black Sneakers', 1999)">Add to Cart</button>
+      </div>
 
-        <!-- Testimonials -->
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="section-title">What Our Customers Say</h2>
-                <div class="testimonial-slider">
-                    <div class="testimonial" v-for="testimonial in testimonials" :key="testimonial.id">
-                        <div class="testimonial-content">
-                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                            <p>{{ testimonial.text }}</p>
-                            <div class="testimonial-rating">
-                                <i v-for="i in 5" :key="i" class="fas fa-star" :class="{ active: i <= testimonial.rating }"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-img">
-                                <img :src="testimonial.image" :alt="testimonial.name">
-                            </div>
-                            <div class="author-info">
-                                <h4>{{ testimonial.name }}</h4>
-                                <p>{{ testimonial.location }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-dots">
-                    <span v-for="(_, index) in testimonials" :key="index" class="dot" :class="{ active: index === 0 }"></span>
-                </div>
-            </div>
-        </section>
+      <!-- Add more cards as needed -->
+    </section>
 
-        <!-- About Section -->
-        <section class="about" id="about">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-img">
-                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Sustainable Shopping">
-                    </div>
-                    <div class="about-content">
-                        <h2 class="section-title">Our Commitment to Sustainability</h2>
-                        <p>At EcoShop, we believe in a future where commerce and environmental responsibility go hand in hand. Every product in our store is carefully selected to meet strict ecological and ethical standards.</p>
-                        <ul class="about-features">
-                            <li><i class="fas fa-leaf"></i> Eco-friendly materials</li>
-                            <li><i class="fas fa-recycle"></i> Sustainable packaging</li>
-                            <li><i class="fas fa-hands-helping"></i> Fair trade practices</li>
-                            <li><i class="fas fa-globe-americas"></i> Carbon-neutral shipping</li>
-                        </ul>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter -->
-        <section class="newsletter">
-            <div class="container">
-                <div class="newsletter-content">
-                    <h2>Join Our Newsletter</h2>
-                    <p>Subscribe to get special offers, free giveaways, and eco-friendly tips.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit" class="btn">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Shopping Cart Sidebar -->
-        <div class="cart-sidebar" :class="{ active: cartOpen }">
-            <div class="cart-header">
-                <h3>Your Cart ({{ cartItems.length }})</h3>
-                <button class="close-cart" @click="toggleCart"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="cart-items" v-if="cartItems.length > 0">
-                <div class="cart-item" v-for="(item, index) in cartItems" :key="index">
-                    <div class="item-img">
-                        <img :src="item.image" :alt="item.name">
-                    </div>
-                    <div class="item-details">
-                        <h4>{{ item.name }}</h4>
-                        <div class="item-price">${{ item.price.toFixed(2) }}</div>
-                        <div class="item-quantity">
-                            <button @click="decreaseQuantity(index)">-</button>
-                            <span>{{ item.quantity }}</span>
-                            <button @click="increaseQuantity(index)">+</button>
-                        </div>
-                    </div>
-                    <button class="remove-item" @click="removeFromCart(index)"><i class="fas fa-trash"></i></button>
-                </div>
-            </div>
-            <div class="cart-empty" v-else>
-                <i class="fas fa-shopping-cart"></i>
-                <p>Your cart is empty</p>
-                <a href="#products" class="btn" @click="toggleCart">Shop Now</a>
-            </div>
-            <div class="cart-footer" v-if="cartItems.length > 0">
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span>${{ calculateTotal().toFixed(2) }}</span>
-                </div>
-                <div class="cart-buttons">
-                    <button class="btn btn-outline" @click="toggleCart">Continue Shopping</button>
-                    <button class="btn">Checkout</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product Modal -->
-        <div class="product-modal" :class="{ active: selectedProduct }">
-            <div class="product-modal-content">
-                <button class="close-modal" @click="closeProductModal"><i class="fas fa-times"></i></button>
-                <div class="product-modal-grid" v-if="selectedProduct">
-                    <div class="product-modal-img">
-                        <img :src="selectedProduct.image" :alt="selectedProduct.name">
-                        <div class="product-badge" v-if="selectedProduct.badge">{{ selectedProduct.badge }}</div>
-                    </div>
-                    <div class="product-modal-info">
-                        <h2>{{ selectedProduct.name }}</h2>
-                        <div class="product-rating">
-                            <i v-for="i in 5" :key="i" class="fas fa-star" :class="{ active: i <= selectedProduct.rating }"></i>
-                            <span>({{ selectedProduct.reviewCount }} reviews)</span>
-                        </div>
-                        <div class="product-price">
-                            <span class="current-price">${{ selectedProduct.price.toFixed(2) }}</span>
-                            <span class="old-price" v-if="selectedProduct.oldPrice">${{ selectedProduct.oldPrice.toFixed(2) }}</span>
-                        </div>
-                        <div class="product-description">
-                            <p>{{ selectedProduct.description || 'This eco-friendly product is designed with sustainability in mind. Made from high-quality materials that are better for the environment and built to last.' }}</p>
-                        </div>
-                        
-                        <!-- Live Chat Reviews Section -->
-                        <div class="live-reviews">
-                            <h3>Live Customer Reviews</h3>
-                            <div class="reviews-container">
-                                <div class="review-messages">
-                                    <div v-for="(message, index) in selectedProduct ? getChatMessages(selectedProduct.id) : []" :key="index" 
-                                         :class="['chat-message', message.isUser ? 'user-message' : 'customer-message']">
-                                        <div class="message-avatar">
-                                            <img :src="message.avatar" :alt="message.name">
-                                        </div>
-                                        <div class="message-content">
-                                            <div class="message-header">
-                                                <span class="message-name">{{ message.name }}</span>
-                                                <span class="message-time">{{ message.time }}</span>
-                                            </div>
-                                            <p>{{ message.text }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-input">
-                                    <input type="text" placeholder="Join the conversation..." v-model="newChatMessage">
-                                    <button @click="addChatMessage"><i class="fas fa-paper-plane"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="product-category">
-                            <span>Category: </span>
-                            <span>{{ selectedProduct.category }}</span>
-                        </div>
-                        <div class="product-quantity">
-                            <span>Quantity:</span>
-                            <div class="quantity-selector">
-                                <button @click="decreaseModalQuantity">-</button>
-                                <span>{{ modalQuantity }}</span>
-                                <button @click="increaseModalQuantity">+</button>
-                            </div>
-                        </div>
-                        <div class="product-actions-modal">
-                            <button @click="addToCartFromModal" class="btn">Add to Cart</button>
-                            <button @click="toggleWishlist(selectedProduct)" class="btn-outline" :class="{ active: isInWishlist(selectedProduct) }">
-                                <i class="fas fa-heart"></i> {{ isInWishlist(selectedProduct) ? 'Remove from Wishlist' : 'Add to Wishlist' }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-about">
-                        <h3>EcoShop</h3>
-                        <p>Your destination for sustainable and eco-friendly products that help create a better future for our planet.</p>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer-links">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#products">Products</a></li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                        <h3>Categories</h3>
-                        <ul>
-                            <li><a href="#">Home & Kitchen</a></li>
-                            <li><a href="#">Beauty & Personal Care</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Food & Beverages</a></li>
-                            <li><a href="#">Outdoor Living</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-contact">
-                        <h3>Contact Us</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Green Street, EcoCity, EC 12345</p>
-                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                        <p><i class="fas fa-envelope"></i> info@ecoshop.com</p>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2023 $inghShop. All Rights Reserved.</p>
-                    <div class="payment-methods">
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-amex"></i>
-                        <i class="fab fa-cc-paypal"></i>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Overlay -->
-        <div class="overlay" :class="{ active: mobileMenuOpen || cartOpen || searchOpen || selectedProduct }" @click="closeAll"></div>
+    <div class="cart" id="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <p>Total: ₹<span id="cart-total">0</span></p>
     </div>
+  </main>
 
-    <script type="module" src="/static/script.js"></script>
+  <footer>
+    <p>© 2025 BroMart. No refunds, just regrets 😎</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
 </body>
 </html>
