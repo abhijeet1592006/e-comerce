@@ -129,9 +129,7 @@
 
   
   @media (max-width: 768px) {
-    .product-grid {
-      grid-template-columns: 1fr;
-    }
+
     .specific{
         margin-top: 2dvh;
         background-color:#22333B;
