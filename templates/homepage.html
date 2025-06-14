@@ -14,7 +14,31 @@
       <h1>$ingh</h1>
 
       <div class="cart-icon" onclick="toggleCart()">
-        🛍️ <span id="cart-count">0</span>
+        <svg width="40px" height="40px" viewBox="0 -2 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+          <g id="Carrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <title>cart</title>
+            <desc>Created with Sketch.</desc>
+            <defs> </defs>
+            <g id="Vivid.JS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Vivid-Icons" transform="translate(-587.000000, -175.000000)">
+                <g id="Icons" transform="translate(37.000000, 169.000000)">
+                  <g id="cart" transform="translate(546.000000, 0.000000)">
+                    <g transform="translate(4.000000, 6.000000)" id="Shape">
+                      <path
+                        d="M10.58,29.043 C12.4949277,29.0694229 14.0284086,30.6385295 14.0108538,32.5535591 C13.993299,34.4685886 12.4313106,36.0093194 10.5162203,36.0006331 C8.60113003,35.9919467 7.05318229,34.43711 7.053,32.522 C7.05854818,31.5926903 7.43345802,30.7037395 8.09507761,30.0511241 C8.75669719,29.3985087 9.65070149,29.0358143 10.58,29.043 Z M22.351,29.043 C24.2638144,29.0776442 25.789741,30.6502507 25.7667487,32.5632407 C25.7437564,34.4762307 24.1804737,36.0117079 22.2673792,36.0003684 C20.3542847,35.9890289 18.8093137,34.4351281 18.809,32.522 C18.8265943,30.5832882 20.4122846,29.0258018 22.351,29.043 Z M40,6 L10,6 L5,0 L0,0 L14,20 L26,20 L24,23 L9,23 L5,27 L26,27 L40,6 Z"
+                        fill="#DDEB9D"> </path>
+                      <path d="M12,10 L32,10 L30,12 L14,12 L12,10 Z M15,14 L28,14 L26,16 L17,16 L15,14 Z"
+                        fill="#22333B"> </path>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg> <span id="cart-count">0</span>
       </div>
     </nav>
   </header>
@@ -46,7 +70,7 @@
           alt="Product 1">
         <h2>Red Saree</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
       <div class="product-card">
@@ -54,57 +78,55 @@
           alt="Product 2">
         <h2>Top</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
       <div class="product-card">
-        <img src="https://fcity.in/images/products/343564477/6jmkw_512.jpg"
-          alt="Product 3">
+        <img src="https://fcity.in/images/products/343564477/6jmkw_512.jpg" alt="Product 3">
         <h2>Kurti</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
       </div>
       <div class="product-card">
-        <img src="https://www.shoplibas.com/cdn/shop/files/26745.jpg?v=1748354455"
-          alt="Product 4">
+        <img src="https://www.shoplibas.com/cdn/shop/files/26745.jpg?v=1748354455" alt="Product 4">
         <h2>Black Kurti</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
       </div>
       <div class="product-card">
-        <img src="https://static.cilory.com/376098-large_default/estonished-bottle-green-shirt.jpg"
-          alt="Product 5">
+        <img src="https://static.cilory.com/376098-large_default/estonished-bottle-green-shirt.jpg" alt="Product 5">
         <h2>Green Top</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
       </div>
       <div class="product-card">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_u5Z3dzIG4075vYyJzMy7z5nbBq88Xi-Rw&s"
           alt="Product 6">
         <h2>Red Hoodie</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
       </div>
       <div class="product-card">
-        <img src="https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/15288076/2021/12/22/ac35ca03-ece6-43a6-b296-4eb31596d3311640155918616-Mast--Harbour-Women-Tshirts-6851640155918255-1.jpg"
+        <img
+          src="https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/15288076/2021/12/22/ac35ca03-ece6-43a6-b296-4eb31596d3311640155918616-Mast--Harbour-Women-Tshirts-6851640155918255-1.jpg"
           alt="Product 7">
         <h2>Girls Tshirt</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
       </div>
 
 
 
-  </section>
+    </section>
 
 
 
 
-  <!-- Kids section -->
+    <!-- Kids section -->
 
 
 
-  <section class="product-grid" id="kids">
+    <section class="product-grid" id="kids">
 
 
 
@@ -113,7 +135,7 @@
           alt="Product 8">
         <h2>Red Hoodie</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
       <div class="product-card">
@@ -121,7 +143,7 @@
           alt="Product 9">
         <h2>Kids Hoodie</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
       <div class="product-card">
@@ -129,7 +151,7 @@
           alt="Product 10">
         <h2>shirt</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
       <div class="product-card">
@@ -137,7 +159,7 @@
           alt="Product 11">
         <h2>jeans</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
       <div class="product-card">
@@ -145,7 +167,7 @@
           alt="Product 12">
         <h2>Cap</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
       <div class="product-card">
@@ -153,78 +175,76 @@
           alt="Product 13">
         <h2>Red Hoodie</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
 
 
 
 
-  </section>
+    </section>
 
-  <!-- men section -->
+    <!-- men section -->
 
-  
-  <section class="product-grid" id="men">
+
+    <section class="product-grid" id="men">
 
 
       <div class="product-card">
-        <img src="https://media.powerlook.in/catalog/product/d/p/dp21146521_1.jpg?aio=w-640"
-          alt="Product 15">
+        <img src="https://media.powerlook.in/catalog/product/d/p/dp21146521_1.jpg?aio=w-640" alt="Product 15">
         <h2>Shirt</h2>
         <p>₹999</p>
-        <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
+        <button onclick="view()">View</button>
 
       </div>
-     
-        <div class="product-card">
-          <img src="https://i.pinimg.com/736x/30/7a/4c/307a4c91b8fa3fa374789d5fb63923c5.jpg"
-            alt="Product 16">
-          <h2>Coat</h2>
-          <p>₹999</p>
-          <button onclick="addToCart('Red Hoodie', 999)">Add to Cart</button>
 
-        </div>
+      <div class="product-card">
+        <img src="https://i.pinimg.com/736x/30/7a/4c/307a4c91b8fa3fa374789d5fb63923c5.jpg" alt="Product 16">
+        <h2>Coat</h2>
+        <p>₹999</p>
+        <button onclick="view()">View</button>
 
-        <div class="product-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSaGVId7VlhqjIewgfHmnXxmdD6_5wfR5T_A&s" 
+      </div>
+
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSaGVId7VlhqjIewgfHmnXxmdD6_5wfR5T_A&s"
           alt="Product 17">
-          <h2>jersy</h2>
-          <p>₹1999</p>
-          <button onclick="addToCart('Black Sneakers', 1999)">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW6nJJ-6OWGrGJqzTICrO8MvpGZWwFfV9WFg&s" 
+        <h2>jersy</h2>
+        <p>₹1999</p>
+        <button onclick="addToCart('Black Sneakers', 1999)">View</button>
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW6nJJ-6OWGrGJqzTICrO8MvpGZWwFfV9WFg&s"
           alt="Product 18">
-          <h2>jersy</h2>
-          <p>₹1999</p>
-          <button onclick="addToCart('Black Sneakers', 1999)">Add to Cart</button>
-        </div>
-        
-        <div class="product-card">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2022/5/KG/MW/RV/65727/vintage-leather-wallet-500x500.jpg" 
+        <h2>jersy</h2>
+        <p>₹1999</p>
+        <button onclick="addToCart('Black Sneakers', 1999)">View</button>
+      </div>
+
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2022/5/KG/MW/RV/65727/vintage-leather-wallet-500x500.jpg"
           alt="Product 19">
-          <h2>Wallet</h2>
-          <p>₹1999</p>
-          <button onclick="addToCart('Black Sneakers', 1999)">Add to Cart</button>
-        </div>
+        <h2>Wallet</h2>
+        <p>₹1999</p>
+        <button onclick="addToCart('Black Sneakers', 1999)">View</button>
+      </div>
 
-        <div class="product-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ1duG0iY3I8HxvZttAK1jh3ZiuXLLonD7VQ&s" 
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ1duG0iY3I8HxvZttAK1jh3ZiuXLLonD7VQ&s"
           alt="Product 20">
-          <h2>watch</h2>
-          <p>₹1999</p>
-          <button onclick="addToCart('Black Sneakers', 1999)">Add to Cart</button>
-        </div>
+        <h2>watch</h2>
+        <p>₹1999</p>
+        <button onclick="addToCart('Black Sneakers', 1999)">View</button>
+      </div>
 
-        <div class="product-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-Gpc46lswOn55G9nfnWpP5fyblHOqquoeDQ&s" 
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-Gpc46lswOn55G9nfnWpP5fyblHOqquoeDQ&s"
           alt="Product 21">
-          <h2>belt</h2>
-          <p>₹1999</p>
-          <button onclick="addToCart('Black Sneakers', 1999)">Add to Cart</button>
-        </div>
-  </section>
+        <h2>belt</h2>
+        <p>₹1999</p>
+        <button onclick="addToCart('Black Sneakers', 1999)">View</button>
+      </div>
+    </section>
 
     <div class="cart" id="cart">
       <h2>Your Cart</h2>
@@ -234,7 +254,8 @@
   </main>
 
   <footer>
-    <p>© 2025 BroMart. No refunds, just regrets 😎</p>
+    <p>© 2025 Singh. All Rights Reserved.</p>
+    <p>contact the devloper <a href="https://github.com/abhijeet1592006">here</a></p>
   </footer>
 
   <script src="/static/script.js"></script>

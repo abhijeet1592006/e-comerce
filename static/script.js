@@ -3,3 +3,7 @@ function scrolls(a){
     section.scrollIntoView({behavior:"instant"})
     
 }
+
+function view(){
+    
+}
